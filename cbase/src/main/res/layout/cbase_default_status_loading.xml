@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cbase_shape_loading_progress"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/pb_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/cbase_loading_anim" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="加载中..."
+        android:textColor="@android:color/white" />
+
+</android.support.v7.widget.LinearLayoutCompat>

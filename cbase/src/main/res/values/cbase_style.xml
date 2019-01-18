@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--APP样式-->
+    <style name="CBaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <!--秒开Splash样式，用于动态Splash图片场景，依然存在白屏，Application尽量减少耗时操作尽快进入Splash-->
+    <style name="CBaseDynamicSplash" parent="@style/CBaseAppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <!--秒开Splash样式，避免启动时白屏，用于固定Splash图片场景，同时Splash不需加载页面-->
+    <style name="CBaseFixedSplash" parent="@style/CBaseDynamicSplash">
+        <!--需继承重写下面属性 @drawable/xxx 或 @mipmap/xxx-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!--透明Activity样式，Activity式透明弹窗-->
+    <style name="CBaseTranslucentActivity" parent="@style/CBaseAppTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--普通弹窗-->
+    <style name="CNormalDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">stateHidden|adjustResize</item>
+    </style>
+
+    <!--不浮动，全屏弹窗-->
+    <style name="CFloatingDialog" parent="@style/CNormalDialog">
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <!--Dialog动画样式1-->
+    <style name="CDialogFadeAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/cbase_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/cbase_fade_out</item>
+    </style>
+
+    <!--Dialog动画样式2-->
+    <style name="CDialogSlideAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/cbase_slide_bottom_in_alpha</item>
+        <item name="android:windowExitAnimation">@anim/cbase_slide_bottom_out_alpha</item>
+    </style>
+
+    <!--Toolbar样式-->
+    <style name="CBaseToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <!--Toolbar样式-->
+    <style name="CToolbar" parent="@style/CBaseToolbar" />
+
+    <!--Toolbar标题样式-->
+    <style name="CToolbarTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">#1d1d26</item>
+    </style>
+
+    <!--Toolbar右按钮样式-->
+    <style name="CToolbarRightButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:maxHeight">?attr/actionBarSize</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:textColor">#1d1d26</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:minWidth">60dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!--Toolbar下划线样式-->
+    <style name="CToolbarLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">#cccccc</item>
+    </style>
+
+</resources>

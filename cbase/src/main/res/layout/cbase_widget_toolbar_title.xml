@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        style="@style/CToolbar">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tool_bar_title"
+            style="@style/CToolbarTitle" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/tool_bar_right_button"
+            style="@style/CToolbarRightButton"
+            android:text="确定"
+            android:visibility="gone" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:id="@+id/tool_bar_line"
+        style="@style/CToolbarLine" />
+
+</android.support.v7.widget.LinearLayoutCompat>

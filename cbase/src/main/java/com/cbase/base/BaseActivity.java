@@ -18,6 +18,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -33,6 +35,8 @@ import io.reactivex.schedulers.Schedulers;
 public abstract class BaseActivity extends RxAppCompatActivity {
     protected final String TAG = getClass().getSimpleName();
 
+    protected Unbinder mUnbinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +45,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         if (layoutId > 0) {
             setContentView(layoutId);
         }
-        initView();
+        mUnbinder = ButterKnife.bind(this);
         initActivity(savedInstanceState, getIntent().getExtras());
         if (isRegisterEventBusHere()) {
             EventBus.getDefault().register(this);
@@ -55,6 +59,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         }
         AppManager.getInstance().removeActivity(this);
         super.onDestroy();
+        mUnbinder.unbind();
     }
 
     /**
@@ -237,11 +242,6 @@ public abstract class BaseActivity extends RxAppCompatActivity {
      * @return
      */
     protected abstract int getLayoutId();
-
-    /**
-     * 控件绑定操作（如findViewById 或 ButterKnife注册）
-     */
-    protected abstract void initView();
 
     /**
      * 初始化Activity

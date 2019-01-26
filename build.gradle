@@ -41,4 +41,5 @@ ext {
 
     version_support_lib = '28.0.0'
     compat = "com.android.support:appcompat-v7:$version_support_lib"
+    recyclerview = "com.android.support:recyclerview-v7:$version_support_lib"
 }

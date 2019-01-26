@@ -19,6 +19,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -43,6 +45,7 @@ public abstract class BaseFragment extends RxFragment {
     private boolean mVisibleToUser;
 
     protected BaseActivity mActivity;
+    protected Unbinder mUnbinder;
     private View mRootView;
 
     @Override
@@ -86,7 +89,7 @@ public abstract class BaseFragment extends RxFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initView(view);
+        mUnbinder = ButterKnife.bind(this, view);
         initFragment(savedInstanceState, getArguments());
         if (isRegisterEventBusHere()) {
             EventBus.getDefault().register(this);
@@ -104,6 +107,7 @@ public abstract class BaseFragment extends RxFragment {
             EventBus.getDefault().unregister(this);
         }
         super.onDestroyView();
+        mUnbinder.unbind();
         mRootView = null;
     }
 
@@ -250,13 +254,6 @@ public abstract class BaseFragment extends RxFragment {
      * @return
      */
     protected abstract int getLayoutId();
-
-    /**
-     * 控件绑定操作（如findViewById 或 ButterKnife注册）
-     *
-     * @param view 视图
-     */
-    protected abstract void initView(View view);
 
     /**
      * 初始化Fragment

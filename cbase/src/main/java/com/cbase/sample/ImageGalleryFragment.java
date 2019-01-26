@@ -50,13 +50,9 @@ public class ImageGalleryFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initFragment(Bundle savedInstanceState, Bundle inputBundle) {
         mViewPager = findViewById(R.id.view_pager);
         mIndicator = findViewById(R.id.indicator);
-    }
-
-    @Override
-    protected void initFragment(Bundle savedInstanceState, Bundle inputBundle) {
         if (inputBundle == null) {
             return;
         }

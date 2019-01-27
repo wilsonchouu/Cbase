@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.cbase.R;
 import com.cbase.base.BaseFragment;
@@ -26,9 +27,13 @@ public abstract class SimpleListFragment extends BaseFragment {
     }
 
     @Override
-    protected void initFragment(@Nullable Bundle savedInstanceState, @Nullable Bundle inputBundle) {
+    protected void initView(View view) {
         mBGARefreshLayout = findViewById(R.id.refresh_layout);
         mRecyclerView = findViewById(R.id.recycler_view);
+    }
+
+    @Override
+    protected void initFragment(@Nullable Bundle savedInstanceState, @Nullable Bundle inputBundle) {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(getAdapter());

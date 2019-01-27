@@ -71,8 +71,12 @@ public class WebViewFragment extends BaseFragment {
     }
 
     @Override
-    protected void initFragment(Bundle savedInstanceState, Bundle inputBundle) {
+    protected void initView(View view) {
         mWebView = findViewById(R.id.web_view);
+    }
+
+    @Override
+    protected void initFragment(Bundle savedInstanceState, Bundle inputBundle) {
         if (inputBundle == null) {
             return;
         }
